@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f7f3e9">
+  <meta name="description" content="An illustrated beginner textbook for everyday spoken Malayalam, written entirely in Roman letters.">
+  <title>Malayalam, Every Day</title>
+  <link rel="stylesheet" href="style.css?v=4">
+  <script src="book.js?v=4" defer></script>
+  <script src="reader.js?v=4" defer></script>
+</head>
+<body>
+  <a class="skip" href="#reader">Skip to reading</a>
+  <header class="bar">
+    <a class="wordmark" href="#top" aria-label="Malayalam, Every Day home"><span aria-hidden="true">M.</span> <strong>Malayalam, Every Day</strong></a>
+    <nav class="tabs" aria-label="Study mode">
+      <button type="button" id="read-tab" aria-pressed="true">Read</button>
+      <button type="button" id="ask-tab" aria-pressed="false"><span aria-hidden="true">✦</span> Ask AI</button>
+    </nav>
+    <button class="outline contents-toggle" type="button" id="contents-toggle" aria-controls="mobile-contents">☰ <span>Contents</span></button>
+    <a class="guide-link" href="#pronunciation">Pronunciation <span aria-hidden="true">↗</span></a>
+  </header>
+  <dialog id="mobile-contents" aria-labelledby="mobile-title">
+    <div class="drawer-heading"><h2 id="mobile-title">Contents</h2><form method="dialog"><button class="outline" aria-label="Close contents">×</button></form></div>
+    <nav id="mobile-nav" aria-label="Mobile table of contents"></nav>
+  </dialog>
+  <div class="shell" id="book-shell">
+    <aside class="sidebar">
+      <div class="volume">THE BEGINNER BOOK</div>
+      <nav id="contents" aria-label="Table of contents"></nav>
+      <div class="sidebar-foot"><span id="progress-label">0 of 24 lessons complete</span><progress id="progress" max="24" value="0"></progress></div>
+    </aside>
+    <main id="reader" tabindex="-1">
+      <section class="cover" id="top" aria-labelledby="book-title">
+        <div class="cover-text">
+          <p class="eyebrow">VOL. 01 <span aria-hidden="true">/</span> SPOKEN MALAYALAM</p>
+          <h1 id="book-title">Malayalam,<br><em>Every Day.</em></h1>
+          <p>Learn to speak a little Malayalam at a time, through tea breaks, rainy bus stops, and conversations with friends.</p>
+          <a class="primary" href="#pronunciation">Start with pronunciation <span aria-hidden="true">↓</span></a>
+          <a class="resume" id="resume" hidden>Resume reading <span aria-hidden="true">↗</span></a>
+        </div>
+        <div class="cover-art"><img src="assets/cover.webp?v=3" width="1536" height="1024" alt="Rahul, Kirti, Kevin, Siddharth, Samay, and Devika sit together over tea."></div>
+      </section>
+      <section class="front" id="pronunciation" aria-labelledby="pronunciation-title">
+        <p class="eyebrow">BEFORE CHAPTER ONE</p>
+        <h2 id="pronunciation-title">How to say it</h2>
+        <p>The book uses standard spoken Malayalam in Roman letters. Names keep their usual spelling. Try the line below, then use the guide whenever a sound is new.</p>
+        <div class="pattern"><strong>njaan Rahul aanuh.</strong><span>I’m Rahul.</span></div>
+        <div class="sound-layout">
+          <div>
+            <h3>Vowels</h3>
+            <dl class="sounds">
+              <div><dt>a / aa</dt><dd>Roughly the vowel in “cup” and the longer “ah” in “father.”</dd></div>
+              <div><dt>i / ii</dt><dd>Short as in “bit,” long as in “see.”</dd></div>
+              <div><dt>u / uu</dt><dd>Short and long “oo.” Round your lips as in “food.”</dd></div>
+              <div><dt>e / ee</dt><dd>Start near “bed.” For the long sound, hold the start of “say” steady.</dd></div>
+              <div><dt>o / oo</dt><dd>Use the start of “go,” without the glide. Hold it longer for <b>oo</b>.</dd></div>
+              <div><dt>ai / au</dt><dd>Roughly “eye” and the “ow” in “now.”</dd></div>
+              <div><dt>uh</dt><dd>A quick, relaxed vowel like the start of “about.” Try the ending of <b>aanuh</b>.</dd></div>
+            </dl>
+          </div>
+          <div>
+            <h3>Consonants to listen for</h3>
+            <dl class="sounds">
+              <div><dt>ch / cch / sh</dt><dd>“Chair,” a held version of that sound, and “ship.”</dd></div>
+              <div><dt>nj / ng</dt><dd>“Ny” in “canyon” and “ng” in “sing.” Try <b>njaan</b>.</dd></div>
+              <div><dt>zh</dt><dd>An r-like sound. Curl your tongue tip back for <b>mazha</b> (“rain”).</dd></div>
+              <div><dt>r / v</dt><dd>A quick tongue tap for <b>r</b>. For <b>v</b>, bring your lower lip toward your upper teeth.</dd></div>
+              <div><dt>kk / pp / ll</dt><dd>Hold a doubled consonant a little longer. In <b>vellam</b> (“water”), curl your tongue back for <b>ll</b>.</dd></div>
+              <div><dt>d / dh</dt><dd>Say the <b>d</b> in <b>ende</b> (“my”) like the d in “end,” at the ridge behind your teeth. For <b>dh</b> in <b>idhuh</b> (“this”) and <b>endhaa?</b> (“what?”), touch the back of your upper front teeth and release a quick d sound. The <b>h</b> marks tongue position.</dd></div>
+              <div><dt>nd</dt><dd>In <b>unduh</b> (“there is”), curl your tongue back for <b>nd</b>. Try saying <b>ende</b>, <b>endhaa</b>, and <b>unduh</b> slowly to feel the three tongue positions.</dd></div>
+              <div><dt>n / tt</dt><dd>Curl back for the <b>n</b> in <b>aanuh</b> and <b>veenam</b>, and the <b>tt</b> in <b>veettil</b>. Use the ridge behind your teeth for the <b>tt</b> in <b>pattum</b>.</dd></div>
+            </dl>
+          </div>
+        </div>
+        <p class="note">Some familiar letters cover more than one tongue position. The notes call out those differences. Read words such as <b>aanuh</b> separately on the page, then let them flow together naturally when you speak.</p>
+        <p><a class="text-link" href="https://malayalam.la.utexas.edu/resources/pronunciation-the-basics/" target="_blank" rel="noopener">Hear pronunciation samples from the University of Texas ↗</a></p>
+      </section>
+      <section class="front cast" id="cast" aria-labelledby="cast-title">
+        <p class="eyebrow">THE REGULARS</p>
+        <h2 id="cast-title">Meet the cast</h2>
+        <p>Rahul and Kirti are a couple. Rahul is friends with Kevin and Siddharth. Kirti is Kevin’s older sister, so you’ll hear him call her <b>cheechi</b>. Samay and Devika are dating. Samay is friends with Rahul and Siddharth.</p>
+        <div class="cast-names"><span>Rahul</span><span>Kirti</span><span>Kevin</span><span>Siddharth</span><span>Samay</span><span>Devika</span></div>
+        <p class="note">The friends sometimes use <b>nee</b> with one another. That’s a familiar “you.” With someone you’ve just met, you can often leave “you” out and ask <b>chaaya veenoo?</b> (“Would you like tea?”).</p>
+      </section>
+      <div id="chapters"></div>
+      <section class="front" id="review" aria-labelledby="review-title">
+        <p class="eyebrow">END OF VOLUME 01</p>
+        <h2 id="review-title">Put it together</h2>
+        <p>Say each line out loud before revealing the answer. Then try the scene again with your own plans.</p>
+        <div id="review-drills"></div>
+        <details class="sources"><summary>Language references</summary>
+          <p>Original dialogues and exercises. Grammar and sound references include Rodney F. Moag’s <a href="https://open.umn.edu/opentextbooks/textbooks/1100">Malayalam course and reference grammar</a>, R. E. Asher and T. C. Kumari’s <a href="https://www.routledge.com/Malayalam/Asher/p/book/9781315002217">Malayalam</a>, and the University of Texas guides to <a href="https://malayalam.la.utexas.edu/resources/pronunciation-beyond-the-basics/">spoken pronunciation</a> and <a href="https://malayalam.la.utexas.edu/resources/time-in-malayalam/">time expressions</a>. This edition is ready for learner review and a native-speaker pass.</p>
+        </details>
+        <a class="text-link" href="#top">Back to the beginning ↑</a>
+      </section>
+      <noscript><p class="front">Turn on JavaScript to open the lessons and table of contents.</p></noscript>
+    </main>
+  </div>
+  <main id="ask-view" class="ask-page" tabindex="-1" hidden>
+    <button type="button" class="text-link" id="back-to-passage">← Back to passage</button>
+    <p class="eyebrow">THE STUDY DESK</p>
+    <h1>Ask AI</h1>
+    <p class="ask-intro">Get help with the passage you’re reading.</p>
+    <section class="ask-context" aria-labelledby="context-title">
+      <p class="eyebrow">ATTACHED PASSAGE</p>
+      <h2 id="context-title"></h2>
+      <p id="context-line"></p>
+      <details id="context-note"><summary>Show the textbook note</summary><p></p></details>
+    </section>
+    <div class="suggestions" aria-label="Lesson help">
+      <button type="button" id="show-meaning">Meaning</button>
+      <button type="button" id="show-grammar">Grammar</button>
+      <button type="button" id="show-examples">More examples</button>
+    </div>
+    <div id="tutor-messages" class="tutor-messages" role="log" aria-live="polite"></div>
+    <p id="tutor-status" class="tutor-status" role="status"></p>
+    <form id="ask-form" hidden>
+      <label for="question">Your question</label>
+      <textarea id="question" rows="3" maxlength="450" required placeholder="Why is this sentence put together this way?"></textarea>
+      <div class="ask-actions">
+        <button type="submit" id="ask-send" class="primary">Send question</button>
+      </div>
+    </form>
+  </main>
+  <footer class="footer">MALAYALAM, EVERY DAY <span>VOLUME 01</span></footer>
+</body>
+</html>
