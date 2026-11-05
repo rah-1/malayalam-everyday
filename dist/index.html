@@ -6,9 +6,9 @@
   <meta name="theme-color" content="#f7f3e9">
   <meta name="description" content="An illustrated beginner textbook for everyday spoken Malayalam, written entirely in Roman letters.">
   <title>Malayalam, Every Day</title>
-  <link rel="stylesheet" href="style.css?v=4">
-  <script src="book.js?v=4" defer></script>
-  <script src="reader.js?v=4" defer></script>
+  <link rel="stylesheet" href="style.css?v=5">
+  <script src="book.js?v=5" defer></script>
+  <script src="reader.js?v=5" defer></script>
 </head>
 <body>
   <a class="skip" href="#reader">Skip to reading</a>
@@ -86,13 +86,24 @@
       </section>
       <div id="chapters"></div>
       <section class="front" id="review" aria-labelledby="review-title">
-        <p class="eyebrow">END OF VOLUME 01</p>
+        <p class="eyebrow">VOLUME 01 REVIEW</p>
         <h2 id="review-title">Put it together</h2>
         <p>Say each line out loud before revealing the answer. Then try the scene again with your own plans.</p>
         <div id="review-drills"></div>
         <details class="sources"><summary>Language references</summary>
           <p>Original dialogues and exercises. Grammar and sound references include Rodney F. Moag’s <a href="https://open.umn.edu/opentextbooks/textbooks/1100">Malayalam course and reference grammar</a>, R. E. Asher and T. C. Kumari’s <a href="https://www.routledge.com/Malayalam/Asher/p/book/9781315002217">Malayalam</a>, and the University of Texas guides to <a href="https://malayalam.la.utexas.edu/resources/pronunciation-beyond-the-basics/">spoken pronunciation</a> and <a href="https://malayalam.la.utexas.edu/resources/time-in-malayalam/">time expressions</a>. This edition is ready for learner review and a native-speaker pass.</p>
         </details>
+        <a class="text-link" href="#top">Back to the beginning ↑</a>
+      </section>
+      <section class="front" id="verb-index" aria-labelledby="verb-index-title">
+        <p class="eyebrow">AT A GLANCE</p>
+        <h2 id="verb-index-title">Verb forms index</h2>
+        <p>Find a verb by its meaning or a form you remember. Headwords group the entries. Each linked form takes you to a lesson where it appears.</p>
+        <p class="note">The future form also describes habits with a time cue such as <b>divasavum</b>. Requests, suggestions, and ability forms have their own labels below.</p>
+        <label for="verb-search">Find a verb, form, or use</label>
+        <input id="verb-search" type="search" placeholder="Try do, pooyi, past, or request">
+        <div id="verb-index-entries" class="verb-index-entries"></div>
+        <p id="verb-index-empty" role="status" hidden>No matching verb forms. Try another word.</p>
         <a class="text-link" href="#top">Back to the beginning ↑</a>
       </section>
       <noscript><p class="front">Turn on JavaScript to open the lessons and table of contents.</p></noscript>

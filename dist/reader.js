@@ -69,7 +69,7 @@ function renderNavigation(target) {
     for (const topic of chapter.lessons) group.append(link(topic.title, topic.id));
     target.append(group);
   });
-  target.append(link("Final review", "review", "nav-start"));
+  target.append(link("Final review", "review", "nav-start"), link("Verb forms index", "verb-index", "nav-start"));
 }
 
 function renderChapter(chapter, i) {
@@ -178,8 +178,45 @@ function renderLesson(topic, chapter, i, j) {
 }
 
 function updateProgress() {
+  const total = book.reduce((count, chapter) => count + chapter.lessons.length, 0);
+  $("progress").max = total;
   $("progress").value = done.size;
-  $("progress-label").textContent = done.size + " of 24 lessons complete";
+  $("progress-label").textContent = done.size + " of " + total + " lessons complete";
+}
+
+function renderVerbIndex() {
+  const lessons = book.flatMap((chapter) => chapter.lessons);
+  const cards = verbLexicon.map(([meaning, headword, forms]) => {
+    const card = element("section", "verb-card");
+    card.append(element("h3", "", meaning), element("p", "verb-headword", headword));
+    const list = element("dl", "verb-forms");
+    for (const [form, label] of forms) {
+      const match = new RegExp("\\b" + form + "\\b", "i");
+      const source = lessons.find((topic) => match.test(JSON.stringify(topic)))
+        || book.find((chapter) => match.test(JSON.stringify(chapter)));
+      if (!source) continue;
+      const row = element("div");
+      const value = element("dd");
+      const formLink = link(form, source.id);
+      formLink.setAttribute("aria-label", form + " · " + label + " · " + source.title);
+      value.append(formLink);
+      row.append(element("dt", "", label), value);
+      list.append(row);
+    }
+    card.append(list);
+    card.dataset.search = [meaning, headword, ...forms.flat()].join(" ").toLowerCase();
+    return card;
+  });
+  $("verb-index-entries").append(...cards);
+  $("verb-search").addEventListener("input", (event) => {
+    const query = event.target.value.trim().toLowerCase();
+    for (const card of cards) card.hidden = !card.dataset.search.includes(query);
+    $("verb-index-empty").hidden = cards.some((card) => !card.hidden);
+  });
+  contexts.set("verb-index", {
+    title: "Verb forms index", line: "cheyyunnu / cheydhu / cheyyum",
+    translation: "do / did / will do", note: "Each linked form opens a lesson where it appears."
+  });
 }
 
 const review = [
@@ -210,9 +247,10 @@ renderNavigation($("contents"));
 renderNavigation($("mobile-nav"));
 book.forEach((chapter, i) => $("chapters").append(renderChapter(chapter, i)));
 review.forEach(([prompt, answer]) => $("review-drills").append(disclosure(prompt, answer, "drill")));
+renderVerbIndex();
 updateProgress();
 
-const sections = [...document.querySelectorAll("#pronunciation, #cast, .chapter, .lesson, #review")];
+const sections = [...document.querySelectorAll("#pronunciation, #cast, .chapter, .lesson, #review, #verb-index")];
 
 function setActive(anchor) {
   if (activeAnchor === anchor && document.querySelector("[aria-current='location']")) return;

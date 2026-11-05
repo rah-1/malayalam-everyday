@@ -265,3 +265,62 @@ const book = [
     ]
   }
 ];
+
+Object.assign(breakdowns, {
+  "more-present": [["njaan", "I"], ["jooli", "work"], ["cheyyunnu", "am doing"]],
+  "more-past": [["njaan", "I"], ["jooli", "work"], ["cheydhu", "did"]],
+  "more-plans": [["njaan", "I"], ["naale", "tomorrow"], ["cheyyum", "will do"]]
+});
+
+book.push({
+  id: "more-things-to-do", title: "More things to do", scene: "porch",
+  alt: "Samay and Devika talk at the table.",
+  intro: "The next evening, Devika checks in with Samay. He has work to finish before the friends can go out.",
+  dialogue: [
+    ["Devika", "nee endhaa cheyyunnadhuh?", "What are you doing?"],
+    ["Samay", "njaan jooli cheyyunnu.", "I’m working."],
+    ["Devika", "Rahul evide pookunnu?", "Where is Rahul going?"],
+    ["Samay", "Rahul kadayil pookunnu.", "Rahul is going to the shop."],
+    ["Devika", "njaan jooli cheydhu. ippool pookaam?", "I did the work. Shall we go now?"],
+    ["Samay", "shari. baakki naale cheyyaam.", "Okay. Let’s do the rest tomorrow."]
+  ],
+  words: [["kadayil", "to / at the shop"], ["baakki", "the rest"], ["innale", "yesterday"], ["cheyyuka", "do"], ["pookuka", "go"], ["padikkuka", "study / learn"], ["nokkuka", "look / check"]],
+  lessons: [
+    lesson("more-present", "What are you doing?", "person + optional object or place + present verb",
+      "Cheyyunnu means ‘do’ or ‘am doing.’ Put the activity before it. Jooli cheyyunnu is ‘am working,’ literally ‘am doing work.’ Use the same order with pookunnu (‘am going’), padikkunnu (‘am studying’), and nokkunnu (‘am looking / checking’).",
+      "For a general ‘What are you doing?’, learn endhaa cheyyunnadhuh? as a phrase. The ending adhuh helps make ‘what you are doing’ into the focus of the question. For a destination, kadayil is ‘to the shop’ with pookunnu.",
+      [["njaan jooli cheyyunnu.", "I’m working."], ["Rahul kadayil pookunnu.", "Rahul is going to the shop."], ["Kirti Malayalam padikkunnu.", "Kirti is learning Malayalam."], ["njaan nokkunnu.", "I’m checking."]],
+      [["Say “I’m going home.”", "njaan veettil pookunnu."], ["Ask a friend what they’re doing.", "nee endhaa cheyyunnadhuh?"]]),
+    lesson("more-past", "What did you do?", "person + optional object or place + past verb",
+      "For ‘do,’ the past form is cheydhu. The dh uses the same teeth position as idhuh. Compare cheyyunnu (‘am doing’) with cheydhu (‘did’). Go changes to pooyi, study to padicchu, and look or check to nokki.",
+      "Use cheydhoo? to ask whether someone did it and cheydhilla to say they didn’t. You can leave the activity out when both people already know what it is.",
+      [["njaan jooli cheydhu.", "I did the work."], ["nee jooli cheydhoo?", "Did you do the work?"], ["njaan cheydhilla.", "I didn’t do it."], ["Kevin innale kadayil pooyi.", "Kevin went to the shop yesterday."], ["Kirti innale padicchu.", "Kirti studied yesterday."], ["njaan nokki.", "I checked."]],
+      [["Say “I didn’t do the work.”", "njaan jooli cheydhilla."], ["Say “I went home yesterday.”", "njaan innale veettil pooyi."]]),
+    lesson("more-plans", "What will we do next?", "time + future form, or a suggestion ending in aam",
+      "Cheyyum means ‘will do’ or ‘do regularly,’ depending on context. Use cheyyaam for ‘let’s do it.’ With go, the matching pair is pookum and pookaam. Padikkum is ‘will study,’ and nokkum is ‘will check.’",
+      "To ask about a plan, use cheyyumoo? or pookumoo? To say you can do something, put cheyyaan before pattum. Cheyyaan is the ‘to do’ form, matching varaan (‘to come’) and pookaan (‘to go’) from Chapter 7.",
+      [["njaan naale cheyyum.", "I’ll do it tomorrow."], ["naale kadayil pookumoo?", "Will you go to the shop tomorrow?"], ["baakki naale cheyyaam.", "Let’s do the rest tomorrow."], ["njaan vaikeettu padikkum.", "I’ll study in the evening."], ["njaan naale nokkum.", "I’ll check tomorrow."], ["enikku cheyyaan pattum.", "I can do it."], ["nee naale cheyyumoo?", "Will you do it tomorrow?"]],
+      [["Suggest doing it now.", "ippool cheyyaam."], ["Say “I can’t do it.”", "enikku cheyyaan pattilla."]])
+  ]
+});
+
+// Only forms found in the book are displayed in the index.
+const verbLexicon = [
+  ["do", "cheyyuka", [["cheyyuka", "Dictionary form"], ["cheyyunnu", "Present"], ["cheyyunnadhuh", "Question phrase form"], ["cheydhu", "Past"], ["cheydhoo", "Past question"], ["cheydhilla", "Past negative"], ["cheyyum", "Future / habitual"], ["cheyyumoo", "Future question"], ["cheyyaam", "Suggestion"], ["cheyyaan", "Infinitive"]]],
+  ["go", "pookuka", [["pookuka", "Dictionary form"], ["pookunnu", "Present"], ["pooyi", "Past"], ["pooyoo", "Past question"], ["pooyilla", "Past negative"], ["pookum", "Future / habitual"], ["pookumoo", "Future question"], ["pookaam", "Suggestion"], ["pookaan", "Infinitive"]]],
+  ["come", "varuka", [["varunnu", "Present"], ["vannu", "Past"], ["vannoo", "Past question"], ["vannilla", "Past negative"], ["varum", "Future / habitual"], ["varumoo", "Future question"], ["varaan", "Infinitive"], ["varatte", "Offer / permission"]]],
+  ["drink", "kudikkuka", [["kudikkunnu", "Present"], ["kudikkunnadhuh", "Question phrase form"], ["kudicchu", "Past"], ["kudicchoo", "Past question"], ["kudicchilla", "Past negative"], ["kudikkum", "Future / habitual"], ["kudikkaam", "Suggestion"]]],
+  ["eat", "kazhikkuka", [["kazhikkunnu", "Present"]]],
+  ["study / learn", "padikkuka", [["padikkuka", "Dictionary form"], ["padikkunnu", "Present"], ["padicchu", "Past"], ["padikkum", "Future / habitual"]]],
+  ["look / check", "nokkuka", [["nokkuka", "Dictionary form"], ["nokkunnu", "Present"], ["nokki", "Past"], ["nokkum", "Future / habitual"], ["nokkaamoo", "Request"], ["nokkatte", "Offer / permission"]]],
+  ["give to the speaker", "taruka", [["taraamoo", "Request"], ["taratte", "Offer"]]],
+  ["take / get", "edukkuka", [["edukkuka", "Dictionary form"], ["edukkatte", "Offer / permission"], ["edukkoo", "Polite instruction"]]],
+  ["bring", "kondu varuka", [["kondu varuka", "Dictionary phrase"], ["kondu varaamoo", "Request"]]],
+  ["see / meet", "kaanuka", [["kaanaam", "Suggestion / see you"]]],
+  ["be possible / can", "pattuka", [["pattum", "Ability"], ["pattumoo", "Ability question"], ["pattilla", "Inability"]]],
+  ["be / identify", "aanuh", [["aanuh", "Identification"], ["aanoo", "Identification question"], ["alla", "Negative identification"]]],
+  ["exist / be available", "unduh", [["unduh", "Presence"], ["undoo", "Availability question"], ["illa", "Absence"], ["undengil", "Conditional"], ["illa engil", "Negative condition"]]],
+  ["want / need", "veenam", [["veenam", "Want / need"], ["veenoo", "Offer / want question"], ["veenda", "Decline / don’t want"]]],
+  ["like", "ishtam aanuh", [["ishtam aanuh", "Preference"], ["ishtam aanoo", "Preference question"]]],
+  ["be enough", "madhi", [["madhi", "Enough / will do"]]]
+];
