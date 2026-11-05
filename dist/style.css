@@ -135,12 +135,14 @@ button.text-link { border: 0; background: none; text-decoration: underline; padd
 .breakdown dd { color: var(--muted); font-size: .77rem; }
 .verb-index-entries { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap: 24px; margin: 24px 0; align-items: start; }
 .verb-card { border: 1px solid var(--line); border-radius: 9px; padding: 15px; min-width: 0; }
-.verb-card h3 { font-size: 1.7rem; }
-.verb-headword { color: var(--muted); font-size: .86rem; margin-top: 5px; }
+.verb-card summary { cursor: pointer; }
+.verb-card h3 { display: inline; font-size: 1.5rem; }
+.verb-headword { color: var(--muted); font: 400 .86rem var(--sans); margin-inline-start: 8px; }
 .verb-forms { margin: 10px 0 0; font-size: .88rem; }
 .verb-forms > div { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; padding: 7px 0; border-top: 1px solid var(--line); }
 .verb-forms dt { color: var(--muted); }
-.verb-forms a { font-weight: 650; overflow-wrap: anywhere; text-underline-offset: 3px; }
+.verb-forms dd { overflow-wrap: anywhere; }
+.verb-forms a { font-weight: 650; text-underline-offset: 3px; }
 #verb-index label { display: block; font-weight: 700; font-size: .88rem; margin: 18px 0 6px; }
 #verb-search { width: 100%; padding: 11px 12px; border: 1px solid #9ca99e; border-radius: 7px; background: var(--cream); color: var(--ink); font: inherit; }
 .practice { margin: 18px 0 12px; }

@@ -186,20 +186,28 @@ function updateProgress() {
 
 function renderVerbIndex() {
   const lessons = book.flatMap((chapter) => chapter.lessons);
-  const cards = verbLexicon.map(([meaning, headword, forms]) => {
-    const card = element("section", "verb-card");
-    card.append(element("h3", "", meaning), element("p", "verb-headword", headword));
+  const cards = verbLexicon.map(([meaning, headword, forms], index) => {
+    const card = element("details", "verb-card");
+    card.open = index < 2;
+    const summary = element("summary");
+    const heading = element("h3", "", meaning);
+    heading.append(element("span", "verb-headword", headword));
+    summary.append(heading);
+    card.append(summary);
     const list = element("dl", "verb-forms");
     for (const [form, label] of forms) {
       const match = new RegExp("\\b" + form + "\\b", "i");
       const source = lessons.find((topic) => match.test(JSON.stringify(topic)))
         || book.find((chapter) => match.test(JSON.stringify(chapter)));
-      if (!source) continue;
       const row = element("div");
       const value = element("dd");
-      const formLink = link(form, source.id);
-      formLink.setAttribute("aria-label", form + " · " + label + " · " + source.title);
-      value.append(formLink);
+      if (source) {
+        const formLink = link(form, source.id);
+        formLink.setAttribute("aria-label", form + " · " + label + " · " + source.title);
+        value.append(formLink);
+      } else {
+        value.textContent = form;
+      }
       row.append(element("dt", "", label), value);
       list.append(row);
     }
@@ -210,12 +218,15 @@ function renderVerbIndex() {
   $("verb-index-entries").append(...cards);
   $("verb-search").addEventListener("input", (event) => {
     const query = event.target.value.trim().toLowerCase();
-    for (const card of cards) card.hidden = !card.dataset.search.includes(query);
+    cards.forEach((card, index) => {
+      card.hidden = !card.dataset.search.includes(query);
+      card.open = query ? !card.hidden : index < 2;
+    });
     $("verb-index-empty").hidden = cards.some((card) => !card.hidden);
   });
   contexts.set("verb-index", {
     title: "Verb forms index", line: "cheyyunnu / cheydhu / cheyyum",
-    translation: "do / did / will do", note: "Each linked form opens a lesson where it appears."
+    translation: "do / did / will do", note: "The index includes reference forms. Linked forms open a lesson where they appear."
   });
 }
 

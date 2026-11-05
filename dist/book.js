@@ -304,23 +304,113 @@ book.push({
   ]
 });
 
-// Only forms found in the book are displayed in the index.
+// Each everyday action verb uses the same set of forms. Special predicates
+// have their own patterns below.
+function actionForms(headword, { present, past, future, infinitive, suggestion, offer, command, need, conditional }) {
+  const presentStem = present.slice(0, -1);
+  return [
+    [headword, "Dictionary form"],
+    [present, "Present"],
+    [presentStem + "oo", "Present question"],
+    [presentStem + "illa", "Present negative"],
+    [presentStem + "adhuh", "Present question phrase form"],
+    [headword + "yaanuh", "Present progressive"],
+    [past[0], "Past"], [past[1], "Past question"], [past[2], "Past negative"],
+    [headword + "yaayirunnu", "Past progressive"],
+    [future[0], "Future / habitual"], [future[0] + "oo", "Future question"], [future[1], "Future negative"],
+    [infinitive, "Infinitive"],
+    [suggestion, "Suggestion"], [suggestion + "oo", "Request"], [offer, "Offer / permission"],
+    [command[0], "Polite instruction"], [command[1], "Negative instruction"],
+    [need, "Need to / should"], [conditional, "If"],
+    [infinitive + " pattum", "Can"], [infinitive + " pattumoo", "Can you?"], [infinitive + " pattilla", "Can’t"]
+  ];
+}
+
+const comeForms = actionForms("varuka", {
+  present: "varunnu", past: ["vannu", "vannoo", "vannilla"], future: ["varum", "varilla"],
+  infinitive: "varaan", suggestion: "varaam", offer: "varatte", command: ["varoo", "vararudhuh"],
+  need: "varanam", conditional: "vannaal"
+});
+
 const verbLexicon = [
-  ["do", "cheyyuka", [["cheyyuka", "Dictionary form"], ["cheyyunnu", "Present"], ["cheyyunnadhuh", "Question phrase form"], ["cheydhu", "Past"], ["cheydhoo", "Past question"], ["cheydhilla", "Past negative"], ["cheyyum", "Future / habitual"], ["cheyyumoo", "Future question"], ["cheyyaam", "Suggestion"], ["cheyyaan", "Infinitive"]]],
-  ["go", "pookuka", [["pookuka", "Dictionary form"], ["pookunnu", "Present"], ["pooyi", "Past"], ["pooyoo", "Past question"], ["pooyilla", "Past negative"], ["pookum", "Future / habitual"], ["pookumoo", "Future question"], ["pookaam", "Suggestion"], ["pookaan", "Infinitive"]]],
-  ["come", "varuka", [["varunnu", "Present"], ["vannu", "Past"], ["vannoo", "Past question"], ["vannilla", "Past negative"], ["varum", "Future / habitual"], ["varumoo", "Future question"], ["varaan", "Infinitive"], ["varatte", "Offer / permission"]]],
-  ["drink", "kudikkuka", [["kudikkunnu", "Present"], ["kudikkunnadhuh", "Question phrase form"], ["kudicchu", "Past"], ["kudicchoo", "Past question"], ["kudicchilla", "Past negative"], ["kudikkum", "Future / habitual"], ["kudikkaam", "Suggestion"]]],
-  ["eat", "kazhikkuka", [["kazhikkunnu", "Present"]]],
-  ["study / learn", "padikkuka", [["padikkuka", "Dictionary form"], ["padikkunnu", "Present"], ["padicchu", "Past"], ["padikkum", "Future / habitual"]]],
-  ["look / check", "nokkuka", [["nokkuka", "Dictionary form"], ["nokkunnu", "Present"], ["nokki", "Past"], ["nokkum", "Future / habitual"], ["nokkaamoo", "Request"], ["nokkatte", "Offer / permission"]]],
-  ["give to the speaker", "taruka", [["taraamoo", "Request"], ["taratte", "Offer"]]],
-  ["take / get", "edukkuka", [["edukkuka", "Dictionary form"], ["edukkatte", "Offer / permission"], ["edukkoo", "Polite instruction"]]],
-  ["bring", "kondu varuka", [["kondu varuka", "Dictionary phrase"], ["kondu varaamoo", "Request"]]],
-  ["see / meet", "kaanuka", [["kaanaam", "Suggestion / see you"]]],
-  ["be possible / can", "pattuka", [["pattum", "Ability"], ["pattumoo", "Ability question"], ["pattilla", "Inability"]]],
-  ["be / identify", "aanuh", [["aanuh", "Identification"], ["aanoo", "Identification question"], ["alla", "Negative identification"]]],
-  ["exist / be available", "unduh", [["unduh", "Presence"], ["undoo", "Availability question"], ["illa", "Absence"], ["undengil", "Conditional"], ["illa engil", "Negative condition"]]],
-  ["want / need", "veenam", [["veenam", "Want / need"], ["veenoo", "Offer / want question"], ["veenda", "Decline / don’t want"]]],
-  ["like", "ishtam aanuh", [["ishtam aanuh", "Preference"], ["ishtam aanoo", "Preference question"]]],
-  ["be enough", "madhi", [["madhi", "Enough / will do"]]]
+  ["do", "cheyyuka", actionForms("cheyyuka", {
+    present: "cheyyunnu", past: ["cheydhu","cheydhoo","cheydhilla"], future: ["cheyyum","cheyyilla"],
+    infinitive: "cheyyaan", suggestion: "cheyyaam", offer: "cheyyatte", command: ["cheyyoo","cheyyarudhuh"],
+    need: "cheyyanam", conditional: "cheydhaal"
+  })],
+  ["go", "pookuka", actionForms("pookuka", {
+    present: "pookunnu", past: ["pooyi","pooyoo","pooyilla"], future: ["pookum","pookilla"],
+    infinitive: "pookaan", suggestion: "pookaam", offer: "pookatte", command: ["pookoo","pookarudhuh"],
+    need: "pookanam", conditional: "pooyaal"
+  })],
+  ["come", "varuka", comeForms],
+  ["drink", "kudikkuka", actionForms("kudikkuka", {
+    present: "kudikkunnu", past: ["kudicchu","kudicchoo","kudicchilla"], future: ["kudikkum","kudikkilla"],
+    infinitive: "kudikkaan", suggestion: "kudikkaam", offer: "kudikkatte", command: ["kudikkoo","kudikkarudhuh"],
+    need: "kudikkanam", conditional: "kudicchaal"
+  })],
+  ["eat", "kazhikkuka", actionForms("kazhikkuka", {
+    present: "kazhikkunnu", past: ["kazhicchu","kazhicchoo","kazhicchilla"], future: ["kazhikkum","kazhikkilla"],
+    infinitive: "kazhikkaan", suggestion: "kazhikkaam", offer: "kazhikkatte", command: ["kazhikkoo","kazhikkarudhuh"],
+    need: "kazhikkanam", conditional: "kazhicchaal"
+  })],
+  ["study / learn", "padikkuka", actionForms("padikkuka", {
+    present: "padikkunnu", past: ["padicchu","padicchoo","padicchilla"], future: ["padikkum","padikkilla"],
+    infinitive: "padikkaan", suggestion: "padikkaam", offer: "padikkatte", command: ["padikkoo","padikkarudhuh"],
+    need: "padikkanam", conditional: "padicchaal"
+  })],
+  ["look / check", "nokkuka", actionForms("nokkuka", {
+    present: "nokkunnu", past: ["nokki","nokkiyoo","nokkiyilla"], future: ["nokkum","nokkilla"],
+    infinitive: "nokkaan", suggestion: "nokkaam", offer: "nokkatte", command: ["nokkoo","nokkarudhuh"],
+    need: "nokkanam", conditional: "nokkiyaal"
+  })],
+  ["give to the speaker", "taruka", actionForms("taruka", {
+    present: "tarunnu", past: ["tannu","tannoo","tannilla"], future: ["tarum","tarilla"],
+    infinitive: "taraan", suggestion: "taraam", offer: "taratte", command: ["taroo","tararudhuh"],
+    need: "taranam", conditional: "tannaal"
+  })],
+  ["take / get", "edukkuka", actionForms("edukkuka", {
+    present: "edukkunnu", past: ["edutthu","edutthoo","edutthilla"], future: ["edukkum","edukkilla"],
+    infinitive: "edukkaan", suggestion: "edukkaam", offer: "edukkatte", command: ["edukkoo","edukkarudhuh"],
+    need: "edukkanam", conditional: "edutthaal"
+  })],
+  ["bring", "kondu varuka", comeForms.map(([form, label]) => ["kondu " + form, label])],
+  ["see / meet", "kaanuka", actionForms("kaanuka", {
+    present: "kaanunnu", past: ["kandu","kandoo","kandilla"], future: ["kaanum","kaanilla"],
+    infinitive: "kaanaan", suggestion: "kaanaam", offer: "kaanatte", command: ["kaanoo","kaanarudhuh"],
+    need: "kaananam", conditional: "kandaal"
+  })],
+  ["be possible / can", "pattuka", [
+    ["pattuka", "Dictionary form"], ["pattum", "Ability"], ["pattumoo", "Ability question"],
+    ["pattilla", "Inability"], ["pattunnilla", "Present inability"],
+    ["patti", "Was able to"], ["pattiyoo", "Were you able to?"], ["pattiyilla", "Was unable to"],
+    ["pattumengil", "If possible"]
+  ]],
+  ["be / identify", "aanuh", [
+    ["aanuh", "Identification"], ["aanoo", "Identification question"], ["alla", "Negative identification"],
+    ["aayirunnu", "Past"], ["aayirunnoo", "Past question"], ["aayirunnilla", "Past negative"],
+    ["aayirikkum", "Future / likely"], ["aayirikkumoo", "Future question"], ["aayirikkilla", "Future negative"],
+    ["aanengil", "If it is"], ["alla engil", "If it isn’t"]
+  ]],
+  ["exist / be available", "unduh", [
+    ["unduh", "Presence"], ["undoo", "Availability question"], ["illa", "Absence"],
+    ["undaayirunnu", "Past"], ["undaayirunnoo", "Past question"], ["undaayirunnilla", "Past negative"],
+    ["undaakum", "Future"], ["undaakumoo", "Future question"], ["undaakilla", "Future negative"],
+    ["undengil", "If there is"], ["illa engil", "If there isn’t"]
+  ]],
+  ["want / need", "veenam", [
+    ["veenam", "Want / need"], ["veenoo", "Offer / want question"], ["veenda", "Decline / don’t want"],
+    ["veenamaayirunnu", "Wanted / needed"], ["veenamaayirunnoo", "Did you want / need?"],
+    ["veendi varum", "Will need"], ["veenamengil", "If wanted / needed"]
+  ]],
+  ["like", "ishtam aanuh", [
+    ["ishtam aanuh", "Preference"], ["ishtam aanoo", "Preference question"], ["ishtam illa", "Don’t like"],
+    ["ishtam aayirunnu", "Liked"], ["ishtam aayirunnoo", "Did you like it?"], ["ishtam illaayirunnu", "Didn’t like"],
+    ["ishtam aanengil", "If you like it"], ["ishtam illa engil", "If you don’t like it"]
+  ]],
+  ["be enough", "madhi", [
+    ["madhi", "Enough / will do"], ["madhiyoo", "Is it enough?"], ["madhiyaayilla", "Wasn’t enough"],
+    ["madhiyaayirunnu", "Was enough"], ["madhiyaakum", "Will be enough"],
+    ["madhiyaavilla", "Won’t be enough"], ["madhi engil", "If it’s enough"]
+  ]]
 ];
